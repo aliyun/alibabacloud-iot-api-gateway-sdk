@@ -1,0 +1,69 @@
+{
+	"scope": "alibabacloud",
+	"name": "IotApiGateway",
+	"version": "0.0.1",
+	"main": "./client.tea",
+	"maintainers": [
+		{
+			"name": "Alibaba Cloud SDK",
+			"email": "sdk-team@alibabacloud.com"
+		}
+	],
+	"libraries": {
+		"Util": "alibabacloud:Util:*",
+		"APIGatewayUtil": "alibabacloud:APIGatewayUtil:*"
+	},
+	"releases": {
+		"java": "com.aliyun:iotapigateway:0.0.1",
+		"go": "github.com/alibabacloud-go/iot-api-gateway/client:v1.0.0",
+		"csharp": "AlibabaCloud.SDK.IotApiGateway:0.0.1",
+		"ts": "@alicloud/iot-api-gateway:^1.0.0",
+		"php": "alibabacloud/iot-api-gateway:^0.1.0",
+		"python": "alibabacloud_iot_api_gateway:0.0.1"
+	},
+	"java": {
+		"package": "com.aliyun.iotapigateway",
+		"packageInfo": {
+			"description": "Alibaba Cloud IotApiGateway SDK for Java",
+			"licenseNmae": "The Apache License, Version 2.0",
+			"url": "https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk",
+			"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+			"developerId": "aliyunproducts",
+			"developerName": "Aliyun SDK",
+			"developerEmail": "aliyunsdk@aliyun.com"
+		}
+	},
+	"csharp": {
+		"className": "Client",
+		"namespace": "AlibabaCloud.SDK.IotApiGateway",
+		"packageInfo": {
+			"name": "iot",
+			"title": "alibabacloud-iot",
+			"description": "Alibaba Cloud IotApiGateway SDK Library for .NET",
+			"company": "Alibaba Cloud, Inc"
+		}
+	},
+	"php": {
+		"package": "AlibabaCloud.SDK.IotApiGateway",
+		"clientName": "Client",
+		"packageInfo": {
+			"name": "alibabacloud/iot-api-gateway",
+			"desc": "Alibaba Cloud IotApiGateway SDK Library for PHP",
+			"github": "https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk",
+			"files": {
+				"LICENSE": "../LICENSE"
+			}
+		}
+	},
+	"python": {
+		"package": "alibabacloud_iot_api_gateway",
+		"clientName": "client",
+		"packageInfo": {
+			"name": "alibabacloud_iot_api_gateway",
+			"desc": "Alibaba Cloud IotApiGateway SDK Library for Python",
+			"author": "Alibaba Cloud SDK",
+			"github": "https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk",
+			"email": "sdk-team@alibabacloud.com"
+		}
+	}
+}

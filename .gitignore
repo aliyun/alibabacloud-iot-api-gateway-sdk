@@ -1,0 +1,12 @@
+node_modules/*
+output/
+.DS_Store
+.history/
+.fun/
+.nyc_output/
+coverage/
+./config.js
+package-lock.json
+.libraries.json
+libraries
+go.sum

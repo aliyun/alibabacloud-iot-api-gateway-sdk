@@ -1,0 +1,113 @@
+/**
+ * test
+ */
+import Util;
+import APIGatewayUtil;
+type @appKey = string
+type @appSecret = string
+type @protocol = string
+type @readTimeout = number
+type @connectTimeout = number
+type @httpProxy = string
+type @httpsProxy = string
+type @noProxy = string
+type @maxIdleConns = number
+type @domain = string
+init(config: Config){
+  @domain = config.domain;
+  @appKey = config.appKey;
+  @appSecret = config.appSecret;
+  @protocol = config.protocol;
+  @readTimeout = config.readTimeout;
+  @connectTimeout = config.connectTimeout;
+  @httpProxy = config.httpProxy;
+  @httpsProxy = config.httpsProxy;
+  @noProxy = config.noProxy;
+  @maxIdleConns = config.maxIdleConns;
+}
+model Config {
+  domain: string,
+  protocol?: string,
+  appKey: string,
+  appSecret: string,
+  token?: string,
+  regionId?: string,
+  readTimeout?: number,
+  connectTimeout?: number,
+  localAddr?: string,
+  httpProxy?: string,
+  httpsProxy?: string,
+  noProxy?: string,
+  maxIdleConns?: number,
+}
+
+model CommonParams {
+  apiVer: string(name='apiVer',description='API版本'),
+  iotToken?: string(name='iotToken',description='登录用户的token(客户端)'),
+  cloudToken?: string(name='cloudToken',description='云端资源token（云端)'),
+  language?: string(name='language',description='国际化扩展，语言'),
+  locale?: string(name='locale',description='国际化扩展，地理位置、ip')
+}
+
+model IoTApiRequest {
+  id?: string(name='id',description='一次请求的标示，用于请求跟踪问题排查'),
+  version?: string(name='version',description='协议版本'),
+  params?: map[string]any(name='params',description='JSON对象，访问指定api的业务参数'),
+  request: CommonParams(name='request',description='JSON对象，与业务无关的通用参数'),
+}
+
+/**
+ * Send request
+ * @param pathname the url path
+ * @param protocol http or https
+ * @param method example GET
+ * @param header request header
+ * @param body the object of IoTApiRequest
+ * @param runtime which controls some details of call api, such as retry times
+ * @return the response
+ */
+api doRequest(pathname: string, protocol: string, method: string, header: map[string]string, body: IoTApiRequest, runtime: Util.RuntimeOptions): $Response {
+  __request.protocol = Util.defaultString(@protocol, protocol);
+  __request.method = Util.defaultString(method, 'POST');
+  __request.pathname = pathname;
+  __request.headers = {
+    host = @domain,
+    date = Util.getDateUTCString(),
+    x-ca-nonce = Util.getNonce(),
+    x-ca-key = @appKey,
+    x-ca-signaturemethod = 'HmacSHA256',
+    accept = 'application/json',
+    ...header
+  };
+  if (Util.empty(body.id)) {
+    body.id = Util.getNonce();
+  }
+
+  if (!Util.isUnset(body)) {
+    __request.headers.content-type = 'application/octet-stream';
+    __request.headers.content-md5 = APIGatewayUtil.getContentMD5(Util.toJSONString(body));
+    __request.body = Util.toJSONString(body);
+  }
+
+  __request.headers.x-ca-signature = APIGatewayUtil.getSignature(__request, @appSecret);
+} returns {
+  return __response;
+} runtime {
+  timeouted = 'retry',
+  readTimeout = Util.defaultNumber(runtime.readTimeout, @readTimeout),
+  connectTimeout = Util.defaultNumber(runtime.connectTimeout, @connectTimeout),
+  httpProxy = Util.defaultString(runtime.httpProxy, @httpProxy),
+  httpsProxy = Util.defaultString(runtime.httpsProxy, @httpsProxy),
+  noProxy = Util.defaultString(runtime.noProxy, @noProxy),
+  maxIdleConns = Util.defaultNumber(runtime.maxIdleConns, @maxIdleConns),
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3)
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1)
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
