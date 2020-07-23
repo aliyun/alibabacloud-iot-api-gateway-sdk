@@ -49,10 +49,7 @@
 		"packageInfo": {
 			"name": "alibabacloud/iot-api-gateway",
 			"desc": "Alibaba Cloud IotApiGateway SDK Library for PHP",
-			"github": "https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk",
-			"files": {
-				"LICENSE": "../LICENSE"
-			}
+			"github": "https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk"
 		}
 	},
 	"python": {
