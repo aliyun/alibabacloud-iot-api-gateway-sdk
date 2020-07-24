@@ -17,6 +17,21 @@ function run_php {
   upload_codecov_report php php
 }
 
+function run_python {
+  #env
+  export PYTHONPATH=$PYTHONPATH:`pwd`/python
+  echo $PYTHONPATH
+  # install
+  cd python || return 126
+  pip install coverage
+  pip install alibabacloud-tea-util
+  pip install alibabacloud-apigateway-util
+
+  coverage run --source="./alibabacloud_iot_api_gateway" -m pytest tests/test_* || return 126
+  cd ../
+  upload_codecov_report python python
+}
+
 function run_go {
   cd golang/ || return 126
   export GO111MODULE=on
@@ -49,6 +64,10 @@ elif [ "$lang" == "go" ]
 then
   echo "run golang"
   run_go
+elif [ "$lang" == "python" ]
+then
+  echo "run python"
+  run_python
 fi
 
 exit $?
