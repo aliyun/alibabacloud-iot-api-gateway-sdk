@@ -76,12 +76,23 @@ function contains {
   return 1
 }
 
+function run_java {
+  cd java/ || return 126
+  mvn test -B || return 126
+  cd ../
+  upload_codecov_report java java
+}
+
 lang=$1
 
 if [ "$lang" == "php" ]
 then
   echo "run php"
   run_php
+elif [ "$lang" == "java" ]
+then
+  echo "run java"
+  run_java
 elif [ "$lang" == "go" ]
 then
   echo "run golang"
