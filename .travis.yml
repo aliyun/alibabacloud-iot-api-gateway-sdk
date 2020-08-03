@@ -33,6 +33,10 @@ jobs:
     - language: python
       python: 3.8
       env: TEA_UTIL_ENV="python"
+    - language: csharp
+      mono: none
+      dist: xenial
+      env: TEA_UTIL_ENV="csharp"
 
 
 script:

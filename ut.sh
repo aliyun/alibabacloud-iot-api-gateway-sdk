@@ -41,6 +41,28 @@ function run_go {
   upload_codecov_report golang go
 }
 
+function run_csharp {
+  # before_install
+  wget https://download.visualstudio.microsoft.com/download/pr/42f39f2f-3f24-4340-8c57-0a3133620c21/0a353696275b00cbddc9f60069867cfc/dotnet-sdk-2.2.110-linux-x64.tar.gz
+  mkdir -p ~/dotnet/ && tar zxf dotnet-sdk-2.2.110-linux-x64.tar.gz -C ~/dotnet/
+  sudo ln -sf ~/dotnet/dotnet /usr/bin/dotnet
+  dotnet --info
+
+  # install
+  cd csharp/tests/ || return 126
+  dotnet tool install --global altcover.visualizer
+  dotnet restore
+  dotnet build
+  cd ../
+
+  # run tests
+  dotnet test tests/ /p:AltCover=true || return 126
+  cd ../
+
+  # upload code coverage report
+  upload_codecov_report csharp csharp
+}
+
 function contains {
   local value=$2
   for i in $1
@@ -68,6 +90,10 @@ elif [ "$lang" == "python" ]
 then
   echo "run python"
   run_python
+elif [ "$lang" == "csharp" ]
+then
+  echo "run csharp"
+  run_csharp
 fi
 
 exit $?
