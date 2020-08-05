@@ -37,6 +37,9 @@ jobs:
       mono: none
       dist: xenial
       env: TEA_UTIL_ENV="csharp"
+    - language: java
+      java: 8
+      env: TEA_UTIL_ENV="java"
 
 
 script:
