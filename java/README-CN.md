@@ -1,4 +1,4 @@
-English | [简体中文](README-CN.md)
+[English](README.md) | 简体中文
 
 ![](https://aliyunsdk-pages.alicdn.com/icons/AlibabaCloud.svg)
 
@@ -6,25 +6,27 @@ English | [简体中文](README-CN.md)
 
 [![Latest Stable Version](https://img.shields.io/maven-central/v/com.aliyun/iotapigateway.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.aliyun%22%20AND%20a:%22iotapigateway%22)
 
-## Installation
+
+## 安装
 
 ```xml
 <dependency>
    <groupId>com.aliyun</groupId>
    <artifactId>iotapigateway</artifactId>
-   <version>Use the version shown in the maven badge</version>
+   <version>使用maven标签显示的版本</version>
 </dependency>
 ```
 
-## Issues
+## 问题
 
-[Opening an Issue](https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk/issues/new), Issues not conforming to the guidelines may be closed immediately.
+[提交 Issue](https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk/issues/new)，不符合指南的问题可能会立即关闭。
 
-## References
 
-* [Latest Release](https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk)
+## 相关
 
-## License
+* [最新源码](https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk)
+
+## 许可证
 
 [Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
