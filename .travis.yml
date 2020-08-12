@@ -18,6 +18,15 @@ jobs:
     - language: go
       go: 1.12.x
       env: TEA_UTIL_ENV="go"
+    - language: go
+      go: 1.13.x
+      env: TEA_UTIL_ENV="go"
+    - language: go
+      go: 1.14.x
+      env: TEA_UTIL_ENV="go"
+    - language: go
+      go: 1.15.x
+      env: TEA_UTIL_ENV="go"      
     - language: python
       python: 3.4
       env: TEA_UTIL_ENV="python"
