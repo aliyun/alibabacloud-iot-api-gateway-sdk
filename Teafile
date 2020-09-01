@@ -19,7 +19,7 @@
 		"csharp": "AlibabaCloud.SDK.IotApiGateway:0.0.1",
 		"ts": "@alicloud/iot-api-gateway:^1.0.0",
 		"php": "alibabacloud/iot-api-gateway:^0.1.0",
-		"python": "alibabacloud_iot_api_gateway:0.0.1"
+		"python": "alibabacloud_iot_api_gateway:0.0.2"
 	},
 	"java": {
 		"package": "com.aliyun.iotapigateway",
