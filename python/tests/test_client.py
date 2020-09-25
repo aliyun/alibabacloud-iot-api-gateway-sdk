@@ -35,4 +35,4 @@ class TestClient(unittest.TestCase):
         data = json.loads(res.body.decode('utf-8'))
         print(data)
         self.assertEqual(200, data['code'])
-        self.assertEqual('撞墙数据', data['data'])
+        self.assertEqual('test', data['data'])

@@ -1,32 +1,32 @@
+# -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 import time
 
-from alibabacloud_iot_api_gateway import models as iot_api_gateway_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from Tea.request import TeaRequest
-from Tea.exceptions import TeaException
-from Tea.core import TeaCore
 from Tea.response import TeaResponse
+from Tea.request import TeaRequest
+from Tea.exceptions import TeaException, UnretryableException
+from Tea.core import TeaCore
+
+from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_apigateway_util.client import Client as APIGatewayUtilClient
-from Tea.exceptions import UnretryableException
 
 
-class Client:
+class Client(object):
     """
     test
     """
-    def __init__(self, config, _app_key=None, _app_secret=None, _protocol=None, _read_timeout=None, _connect_timeout=None, _http_proxy=None, _https_proxy=None, _no_proxy=None, _max_idle_conns=None, _domain=None):
-        self._app_key = _app_key
-        self._app_secret = _app_secret
-        self._protocol = _protocol
-        self._read_timeout = _read_timeout
-        self._connect_timeout = _connect_timeout
-        self._http_proxy = _http_proxy
-        self._https_proxy = _https_proxy
-        self._no_proxy = _no_proxy
-        self._max_idle_conns = _max_idle_conns
-        self._domain = _domain
+    def __init__(self, config, _app_key=None, _app_secret=None, _protocol=None, _read_timeout=None, _connect_timeout=None,
+                 _http_proxy=None, _https_proxy=None, _no_proxy=None, _max_idle_conns=None, _domain=None):
+        self._app_key = _app_key        # type: str
+        self._app_secret = _app_secret  # type: str
+        self._protocol = _protocol      # type: str
+        self._read_timeout = _read_timeout  # type: int
+        self._connect_timeout = _connect_timeout  # type: int
+        self._http_proxy = _http_proxy  # type: str
+        self._https_proxy = _https_proxy  # type: str
+        self._no_proxy = _no_proxy      # type: str
+        self._max_idle_conns = _max_idle_conns  # type: int
+        self._domain = _domain          # type: str
         self._domain = config.domain
         self._app_key = config.app_key
         self._app_secret = config.app_secret
@@ -42,23 +42,23 @@ class Client:
         """
         Send request
 
-        :type pathname: str
-        :param pathname: the url path
+        @type pathname: str
+        @param pathname: the url path
 
-        :type protocol: str
-        :param protocol: http or https
+        @type protocol: str
+        @param protocol: http or https
 
-        :type method: str
-        :param method: example GET
+        @type method: str
+        @param method: example GET
 
-        :type header: dict
-        :param header: request header
+        @type header: dict
+        @param header: request header
 
-        :param body: the object of IoTApiRequest
+        @param body: the object of IoTApiRequest
 
-        :param runtime: which controls some details of call api, such as retry times
+        @param runtime: which controls some details of call api, such as retry times
 
-        :return: the response
+        @return: the response
         """
         body.validate()
         runtime.validate()
@@ -105,7 +105,7 @@ class Client:
                 }, header)
                 if UtilClient.empty(body.id):
                     body.id = UtilClient.get_nonce()
-                if not UtilClient.is_unset(body.to_map()):
+                if not UtilClient.is_unset(body):
                     _request.headers["content-type"] = "application/octet-stream"
                     _request.headers["content-md5"] = APIGatewayUtilClient.get_content_md5(UtilClient.to_jsonstring(body.to_map()))
                     _request.body = UtilClient.to_jsonstring(body.to_map())

@@ -1,22 +1,29 @@
+# -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
+try:
+    from typing import Dict, Any
+except ImportError:
+    pass
 
 
 class Config(TeaModel):
-    def __init__(self, domain=None, protocol=None, app_key=None, app_secret=None, token=None, region_id=None, read_timeout=None, connect_timeout=None, local_addr=None, http_proxy=None, https_proxy=None, no_proxy=None, max_idle_conns=None):
-        self.domain = domain
-        self.protocol = protocol
-        self.app_key = app_key
-        self.app_secret = app_secret
-        self.token = token
-        self.region_id = region_id
-        self.read_timeout = read_timeout
-        self.connect_timeout = connect_timeout
-        self.local_addr = local_addr
-        self.http_proxy = http_proxy
-        self.https_proxy = https_proxy
-        self.no_proxy = no_proxy
-        self.max_idle_conns = max_idle_conns
+    def __init__(self, domain=None, protocol=None, app_key=None, app_secret=None, token=None, region_id=None,
+                 read_timeout=None, connect_timeout=None, local_addr=None, http_proxy=None, https_proxy=None, no_proxy=None,
+                 max_idle_conns=None):
+        self.domain = domain            # type: str
+        self.protocol = protocol        # type: str
+        self.app_key = app_key          # type: str
+        self.app_secret = app_secret    # type: str
+        self.token = token              # type: str
+        self.region_id = region_id      # type: str
+        self.read_timeout = read_timeout  # type: int
+        self.connect_timeout = connect_timeout  # type: int
+        self.local_addr = local_addr    # type: str
+        self.http_proxy = http_proxy    # type: str
+        self.https_proxy = https_proxy  # type: str
+        self.no_proxy = no_proxy        # type: str
+        self.max_idle_conns = max_idle_conns  # type: int
 
     def validate(self):
         self.validate_required(self.domain, 'domain')
@@ -59,11 +66,16 @@ class Config(TeaModel):
 
 class CommonParams(TeaModel):
     def __init__(self, api_ver=None, iot_token=None, cloud_token=None, language=None, locale=None):
-        self.api_ver = api_ver
-        self.iot_token = iot_token
-        self.cloud_token = cloud_token
-        self.language = language
-        self.locale = locale
+        # API版本
+        self.api_ver = api_ver          # type: str
+        # 登录用户的token(客户端)
+        self.iot_token = iot_token      # type: str
+        # 云端资源token（云端)
+        self.cloud_token = cloud_token  # type: str
+        # 国际化扩展，语言
+        self.language = language        # type: str
+        # 国际化扩展，地理位置、ip
+        self.locale = locale            # type: str
 
     def validate(self):
         self.validate_required(self.api_ver, 'api_ver')
@@ -88,10 +100,14 @@ class CommonParams(TeaModel):
 
 class IoTApiRequest(TeaModel):
     def __init__(self, id=None, version=None, params=None, request=None):
-        self.id = id
-        self.version = version
-        self.params = {}
-        self.request = request
+        # 一次请求的标示，用于请求跟踪问题排查
+        self.id = id                    # type: str
+        # 协议版本
+        self.version = version          # type: str
+        # JSON对象，访问指定api的业务参数
+        self.params = params            # type: Dict[str, Any]
+        # JSON对象，与业务无关的通用参数
+        self.request = request          # type: CommonParams
 
     def validate(self):
         self.validate_required(self.request, 'request')
