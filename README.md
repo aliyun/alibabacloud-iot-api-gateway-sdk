@@ -4,6 +4,9 @@
 
 ## Alibaba Cloud IotApiGateway SDK Library
 
+[![Travis Build Status](https://travis-ci.org/aliyun/alibabacloud-iot-api-gateway-sdk.svg?branch=master)](https://travis-ci.org/aliyun/alibabacloud-iot-api-gateway-sdk)
+[![codecov](https://codecov.io/gh/aliyun/alibabacloud-iot-api-gateway-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/aliyun/alibabacloud-iot-api-gateway-sdk)
+
 ## 问题
 
 [提交 Issue](https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk/issues/new)，不符合指南的问题可能会立即关闭。
