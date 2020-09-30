@@ -9,6 +9,7 @@ public class Client {
     public String _appKey;
     public String _appSecret;
     public String _protocol;
+    public String _userAgent;
     public Integer _readTimeout;
     public Integer _connectTimeout;
     public String _httpProxy;
@@ -73,7 +74,8 @@ public class Client {
                         new TeaPair("x-ca-nonce", com.aliyun.teautil.Common.getNonce()),
                         new TeaPair("x-ca-key", _appKey),
                         new TeaPair("x-ca-signaturemethod", "HmacSHA256"),
-                        new TeaPair("accept", "application/json")
+                        new TeaPair("accept", "application/json"),
+                        new TeaPair("user-agent", this.getUserAgent())
                     ),
                     header
                 );
@@ -103,4 +105,12 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest);
     }
 
+    /**
+     * Get user agent
+     * @return user agent
+     */
+    public String getUserAgent() throws Exception {
+        String userAgent = com.aliyun.teautil.Common.getUserAgent(_userAgent);
+        return userAgent;
+    }
 }

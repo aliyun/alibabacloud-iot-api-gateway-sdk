@@ -6,6 +6,7 @@ import APIGatewayUtil;
 type @appKey = string
 type @appSecret = string
 type @protocol = string
+type @userAgent = string
 type @readTimeout = number
 type @connectTimeout = number
 type @httpProxy = string
@@ -37,6 +38,7 @@ model Config {
   localAddr?: string,
   httpProxy?: string,
   httpsProxy?: string,
+  userAgent?: string,
   noProxy?: string,
   maxIdleConns?: number,
 }
@@ -77,6 +79,7 @@ api doRequest(pathname: string, protocol: string, method: string, header: map[st
     x-ca-key = @appKey,
     x-ca-signaturemethod = 'HmacSHA256',
     accept = 'application/json',
+    user-agent = getUserAgent(),
     ...header
   };
   if (Util.empty(body.id)) {
@@ -111,3 +114,11 @@ api doRequest(pathname: string, protocol: string, method: string, header: map[st
   ignoreSSL = runtime.ignoreSSL
 }
 
+/**
+ * Get user agent
+ * @return user agent
+ */
+function getUserAgent(): string {
+  var userAgent = Util.getUserAgent(@userAgent);
+  return userAgent;
+}

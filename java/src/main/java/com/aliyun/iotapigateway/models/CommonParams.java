@@ -30,4 +30,44 @@ public class CommonParams extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public CommonParams setApiVer(String apiVer) {
+        this.apiVer = apiVer;
+        return this;
+    }
+    public String getApiVer() {
+        return this.apiVer;
+    }
+
+    public CommonParams setIotToken(String iotToken) {
+        this.iotToken = iotToken;
+        return this;
+    }
+    public String getIotToken() {
+        return this.iotToken;
+    }
+
+    public CommonParams setCloudToken(String cloudToken) {
+        this.cloudToken = cloudToken;
+        return this;
+    }
+    public String getCloudToken() {
+        return this.cloudToken;
+    }
+
+    public CommonParams setLanguage(String language) {
+        this.language = language;
+        return this;
+    }
+    public String getLanguage() {
+        return this.language;
+    }
+
+    public CommonParams setLocale(String locale) {
+        this.locale = locale;
+        return this;
+    }
+    public String getLocale() {
+        return this.locale;
+    }
+
 }

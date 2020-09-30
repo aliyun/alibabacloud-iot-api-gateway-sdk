@@ -19,7 +19,7 @@ func Test_Api(t *testing.T) {
 	utils.AssertNil(t, err)
 
 	params := map[string]interface{}{
-		"input": "test",
+		"input": "gotest",
 	}
 	req := &CommonParams{
 		ApiVer: tea.String("1.0.0"),
@@ -36,5 +36,5 @@ func Test_Api(t *testing.T) {
 	utils.AssertNil(t, err)
 
 	m := util.AssertAsMap(obj)
-	utils.AssertContains(t, "test", m["data"].(string))
+	utils.AssertContains(t, "gotest", m["data"].(string))
 }

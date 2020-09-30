@@ -56,6 +56,10 @@ namespace AlibabaCloud.SDK.IotApiGateway.Models
         [Validation(Required=false)]
         public string HttpsProxy { get; set; }
 
+        [NameInMap("userAgent")]
+        [Validation(Required=false)]
+        public string UserAgent { get; set; }
+
         [NameInMap("noProxy")]
         [Validation(Required=false)]
         public string NoProxy { get; set; }
