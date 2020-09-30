@@ -1,4 +1,4 @@
-English | [简体中文](README-CN.md)
+[English](README.md) | 简体中文
 
 ![](https://aliyunsdk-pages.alicdn.com/icons/AlibabaCloud.svg)
 
@@ -7,15 +7,23 @@ English | [简体中文](README-CN.md)
 [![Travis Build Status](https://travis-ci.org/aliyun/alibabacloud-iot-api-gateway-sdk.svg?branch=master)](https://travis-ci.org/aliyun/alibabacloud-iot-api-gateway-sdk)
 [![codecov](https://codecov.io/gh/aliyun/alibabacloud-iot-api-gateway-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/aliyun/alibabacloud-iot-api-gateway-sdk)
 
-## Issues
+## 安装
 
-[Opening an Issue](https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk/issues/new), Issues not conforming to the guidelines may be closed immediately.
+- [Go](./golang/README-CN.md)
+- [Java](./java/README-CN.md)
+- [Python](./python/README-CN.md)
+- [PHP](./php/README-CN.md)
 
-## References
+## 问题
 
-* [Latest Release](https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk)
+[提交 Issue](https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk/issues/new)，不符合指南的问题可能会立即关闭。
 
-## License
+
+## 相关
+
+* [最新源码](https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk)
+
+## 许可证
 
 [Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
