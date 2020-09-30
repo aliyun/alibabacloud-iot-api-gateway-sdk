@@ -18,6 +18,7 @@ export class Config extends $tea.Model {
   localAddr?: string;
   httpProxy?: string;
   httpsProxy?: string;
+  userAgent?: string;
   noProxy?: string;
   maxIdleConns?: number;
   static names(): { [key: string]: string } {
@@ -33,6 +34,7 @@ export class Config extends $tea.Model {
       localAddr: 'localAddr',
       httpProxy: 'httpProxy',
       httpsProxy: 'httpsProxy',
+      userAgent: 'userAgent',
       noProxy: 'noProxy',
       maxIdleConns: 'maxIdleConns',
     };
@@ -51,6 +53,7 @@ export class Config extends $tea.Model {
       localAddr: 'string',
       httpProxy: 'string',
       httpsProxy: 'string',
+      userAgent: 'string',
       noProxy: 'string',
       maxIdleConns: 'number',
     };
@@ -125,6 +128,7 @@ export default class Client {
   _appKey: string;
   _appSecret: string;
   _protocol: string;
+  _userAgent: string;
   _readTimeout: number;
   _connectTimeout: number;
   _httpProxy: string;
@@ -200,6 +204,7 @@ export default class Client {
           'x-ca-key': this._appKey,
           'x-ca-signaturemethod': "HmacSHA256",
           accept: "application/json",
+          'user-agent': this.getUserAgent(),
           ...header,
         };
         if (Util.empty(body.id)) {
@@ -228,5 +233,13 @@ export default class Client {
     throw $tea.newUnretryableError(_lastRequest);
   }
 
+  /**
+   * Get user agent
+   * @return user agent
+   */
+  getUserAgent(): string {
+    let userAgent = Util.getUserAgent(this._userAgent);
+    return userAgent;
+  }
 
 }

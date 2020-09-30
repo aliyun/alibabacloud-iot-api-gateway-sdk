@@ -17,7 +17,7 @@
 		"java": "com.aliyun:iotapigateway:0.0.1",
 		"go": "github.com/alibabacloud-go/iot-api-gateway/client:v1.0.1",
 		"csharp": "AlibabaCloud.SDK.IotApiGateway:0.0.1",
-		"ts": "@alicloud/iot-api-gateway:^1.0.0",
+		"ts": "@alicloud/iot-api-gateway:^1.0.1",
 		"php": "alibabacloud/iot-api-gateway:^0.1.0",
 		"python": "alibabacloud_iot_api_gateway:0.0.3"
 	},
