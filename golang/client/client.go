@@ -22,6 +22,7 @@ type Config struct {
 	LocalAddr      *string `json:"localAddr,omitempty" xml:"localAddr,omitempty"`
 	HttpProxy      *string `json:"httpProxy,omitempty" xml:"httpProxy,omitempty"`
 	HttpsProxy     *string `json:"httpsProxy,omitempty" xml:"httpsProxy,omitempty"`
+	UserAgent      *string `json:"userAgent,omitempty" xml:"userAgent,omitempty"`
 	NoProxy        *string `json:"noProxy,omitempty" xml:"noProxy,omitempty"`
 	MaxIdleConns   *int    `json:"maxIdleConns,omitempty" xml:"maxIdleConns,omitempty"`
 }
@@ -86,6 +87,11 @@ func (s *Config) SetHttpProxy(v string) *Config {
 
 func (s *Config) SetHttpsProxy(v string) *Config {
 	s.HttpsProxy = &v
+	return s
+}
+
+func (s *Config) SetUserAgent(v string) *Config {
+	s.UserAgent = &v
 	return s
 }
 
@@ -188,6 +194,7 @@ type Client struct {
 	AppKey         *string
 	AppSecret      *string
 	Protocol       *string
+	UserAgent      *string
 	ReadTimeout    *int
 	ConnectTimeout *int
 	HttpProxy      *string
@@ -276,6 +283,7 @@ func (client *Client) DoRequest(pathname *string, protocol *string, method *stri
 				"x-ca-key":             client.AppKey,
 				"x-ca-signaturemethod": tea.String("HmacSHA256"),
 				"accept":               tea.String("application/json"),
+				"user-agent":           client.GetUserAgent(),
 			}, header)
 			if tea.BoolValue(util.Empty(body.Id)) {
 				body.Id = util.GetNonce()
@@ -301,4 +309,14 @@ func (client *Client) DoRequest(pathname *string, protocol *string, method *stri
 	}
 
 	return _resp, _err
+}
+
+/**
+ * Get user agent
+ * @return user agent
+ */
+func (client *Client) GetUserAgent() (_result *string) {
+	userAgent := util.GetUserAgent(client.UserAgent)
+	_result = userAgent
+	return _result
 }
