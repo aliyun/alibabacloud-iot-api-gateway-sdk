@@ -9,8 +9,8 @@ except ImportError:
 
 class Config(TeaModel):
     def __init__(self, domain=None, protocol=None, app_key=None, app_secret=None, token=None, region_id=None,
-                 read_timeout=None, connect_timeout=None, local_addr=None, http_proxy=None, https_proxy=None, no_proxy=None,
-                 max_idle_conns=None):
+                 read_timeout=None, connect_timeout=None, local_addr=None, http_proxy=None, https_proxy=None, user_agent=None,
+                 no_proxy=None, max_idle_conns=None):
         self.domain = domain            # type: str
         self.protocol = protocol        # type: str
         self.app_key = app_key          # type: str
@@ -22,6 +22,7 @@ class Config(TeaModel):
         self.local_addr = local_addr    # type: str
         self.http_proxy = http_proxy    # type: str
         self.https_proxy = https_proxy  # type: str
+        self.user_agent = user_agent    # type: str
         self.no_proxy = no_proxy        # type: str
         self.max_idle_conns = max_idle_conns  # type: int
 
@@ -43,6 +44,7 @@ class Config(TeaModel):
         result['localAddr'] = self.local_addr
         result['httpProxy'] = self.http_proxy
         result['httpsProxy'] = self.https_proxy
+        result['userAgent'] = self.user_agent
         result['noProxy'] = self.no_proxy
         result['maxIdleConns'] = self.max_idle_conns
         return result
@@ -59,6 +61,7 @@ class Config(TeaModel):
         self.local_addr = map.get('localAddr')
         self.http_proxy = map.get('httpProxy')
         self.https_proxy = map.get('httpsProxy')
+        self.user_agent = map.get('userAgent')
         self.no_proxy = map.get('noProxy')
         self.max_idle_conns = map.get('maxIdleConns')
         return self
