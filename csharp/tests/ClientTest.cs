@@ -23,7 +23,7 @@ namespace tests
 
             var client = new Client(config);
 
-            var param = new Dictionary<string, string>
+            var param = new Dictionary<string, object>
             {
                 { "input", "test" }
             };
