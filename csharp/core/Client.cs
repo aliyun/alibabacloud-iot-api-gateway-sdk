@@ -18,6 +18,7 @@ namespace AlibabaCloud.SDK.IotApiGateway
         protected string _appKey;
         protected string _appSecret;
         protected string _protocol;
+        protected string _userAgent;
         protected int? _readTimeout;
         protected int? _connectTimeout;
         protected string _httpProxy;
@@ -106,6 +107,7 @@ namespace AlibabaCloud.SDK.IotApiGateway
                             {"x-ca-key", _appKey},
                             {"x-ca-signaturemethod", "HmacSHA256"},
                             {"accept", "application/json"},
+                            {"user-agent", GetUserAgent()},
                         },
                         header
                     );
@@ -205,6 +207,7 @@ namespace AlibabaCloud.SDK.IotApiGateway
                             {"x-ca-key", _appKey},
                             {"x-ca-signaturemethod", "HmacSHA256"},
                             {"accept", "application/json"},
+                            {"user-agent", GetUserAgent()},
                         },
                         header
                     );
@@ -236,6 +239,16 @@ namespace AlibabaCloud.SDK.IotApiGateway
             }
 
             throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * Get user agent
+         * @return user agent
+         */
+        public string GetUserAgent()
+        {
+            string userAgent = AlibabaCloud.TeaUtil.Common.GetUserAgent(_userAgent);
+            return userAgent;
         }
 
     }

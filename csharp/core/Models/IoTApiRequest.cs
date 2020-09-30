@@ -28,7 +28,7 @@ namespace AlibabaCloud.SDK.IotApiGateway.Models
         /// </summary>
         [NameInMap("params")]
         [Validation(Required=false)]
-        public Dictionary<string, string> Params { get; set; }
+        public Dictionary<string, object> Params { get; set; }
 
         /// <summary>
         /// JSON对象，与业务无关的通用参数
