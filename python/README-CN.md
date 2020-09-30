@@ -16,6 +16,44 @@
 pip install alibabacloud_iot_api_gateway
 ```
 
+## 使用
+
+```python
+import os
+
+from alibabacloud_iot_api_gateway.models import Config, IoTApiRequest, CommonParams
+from alibabacloud_iot_api_gateway.client import Client
+from alibabacloud_tea_util.models import RuntimeOptions
+
+# init client
+config = Config(
+    app_key=os.environ['IOT_APP_KEY'],
+    app_secret=os.environ['IOT_APP_SECRET'],
+    domain='api.link.aliyun.com'
+)
+client = Client(config)
+
+# build request
+request = CommonParams(api_ver='1.0.0')
+body = IoTApiRequest(
+    params={'input': 'test'},
+    request=request
+)
+
+# send request
+response = client.do_request(
+    '/kit/debug/ping',
+    'https',
+    'POST',
+    None,
+    body,
+    RuntimeOptions()
+)
+
+print(response.body)
+```
+
+
 ## 问题
 [提交 Issue](https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk/issues/new)，不符合指南的问题可能会立即关闭。
 
