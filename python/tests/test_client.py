@@ -32,7 +32,7 @@ class TestClient(unittest.TestCase):
             body,
             RuntimeOptions()
         )
+        print(res.body.decode('utf-8'))
         data = json.loads(res.body.decode('utf-8'))
-        print(data)
         self.assertEqual(200, data['code'])
         self.assertEqual('test', data['data'])

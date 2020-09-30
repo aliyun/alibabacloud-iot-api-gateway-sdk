@@ -2,7 +2,6 @@
 # This file is auto-generated, don't edit it. Thanks.
 import time
 
-from Tea.response import TeaResponse
 from Tea.request import TeaRequest
 from Tea.exceptions import TeaException, UnretryableException
 from Tea.core import TeaCore
@@ -15,11 +14,12 @@ class Client(object):
     """
     test
     """
-    def __init__(self, config, _app_key=None, _app_secret=None, _protocol=None, _read_timeout=None, _connect_timeout=None,
-                 _http_proxy=None, _https_proxy=None, _no_proxy=None, _max_idle_conns=None, _domain=None):
+    def __init__(self, config, _app_key=None, _app_secret=None, _protocol=None, _user_agent=None, _read_timeout=None,
+                 _connect_timeout=None, _http_proxy=None, _https_proxy=None, _no_proxy=None, _max_idle_conns=None, _domain=None):
         self._app_key = _app_key        # type: str
         self._app_secret = _app_secret  # type: str
         self._protocol = _protocol      # type: str
+        self._user_agent = _user_agent  # type: str
         self._read_timeout = _read_timeout  # type: int
         self._connect_timeout = _connect_timeout  # type: int
         self._http_proxy = _http_proxy  # type: str
@@ -101,7 +101,8 @@ class Client(object):
                     "x-ca-nonce": UtilClient.get_nonce(),
                     "x-ca-key": self._app_key,
                     "x-ca-signaturemethod": "HmacSHA256",
-                    "accept": "application/json"
+                    "accept": "application/json",
+                    "user-agent": self.get_user_agent()
                 }, header)
                 if UtilClient.empty(body.id):
                     body.id = UtilClient.get_nonce()
@@ -119,3 +120,13 @@ class Client(object):
                     continue
                 raise e
         raise UnretryableException(_last_request, _last_exception)
+
+    def get_user_agent(self):
+        """
+        Get user agent
+
+        @rtype: str
+        @return: user agent
+        """
+        user_agent = UtilClient.get_user_agent(self._user_agent)
+        return user_agent
