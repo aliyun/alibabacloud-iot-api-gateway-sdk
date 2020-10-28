@@ -1,7 +1,7 @@
 {
 	"scope": "alibabacloud",
 	"name": "IotApiGateway",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"main": "./client.tea",
 	"maintainers": [
 		{
@@ -10,7 +10,7 @@
 		}
 	],
 	"libraries": {
-		"Util": "alibabacloud:Util:*",
+		"Util": "darabonba:Util:*",
 		"APIGatewayUtil": "alibabacloud:APIGatewayUtil:*"
 	},
 	"releases": {
