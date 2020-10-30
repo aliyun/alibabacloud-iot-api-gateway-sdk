@@ -1,7 +1,7 @@
 {
 	"scope": "alibabacloud",
 	"name": "IotApiGateway",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"main": "./client.tea",
 	"maintainers": [
 		{
@@ -15,7 +15,7 @@
 	},
 	"releases": {
 		"java": "com.aliyun:iotapigateway:0.0.1",
-		"go": "github.com/alibabacloud-go/iot-api-gateway/client:v1.0.1",
+		"go": "github.com/alibabacloud-go/iot-api-gateway/client:v1.0.2",
 		"csharp": "AlibabaCloud.SDK.IotApiGateway:1.0.1",
 		"ts": "@alicloud/iot-api-gateway:^1.0.1",
 		"php": "alibabacloud/iot-api-gateway:^0.1.0",
