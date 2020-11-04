@@ -62,5 +62,13 @@
 			"github": "https://github.com/aliyun/alibabacloud-iot-api-gateway-sdk",
 			"email": "sdk-team@alibabacloud.com"
 		}
-	}
+	},
+  "cpp": {
+    "packageInfo": {
+      "git": {
+        "scope": "alibabacloud-sdk-cpp",
+        "project": "alibabacloud-iot"
+      }
+    }
+  }
 }

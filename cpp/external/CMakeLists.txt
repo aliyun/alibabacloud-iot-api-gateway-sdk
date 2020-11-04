@@ -1,0 +1,7 @@
+message(STATUS "Install libraries")
+add_subdirectory(darabonba_util)
+add_subdirectory(alibabacloud_apigateway_util)
+add_subdirectory(darabonba_core)
+if (ENABLE_UNIT_TESTS)
+  add_subdirectory(googletest)
+endif()
