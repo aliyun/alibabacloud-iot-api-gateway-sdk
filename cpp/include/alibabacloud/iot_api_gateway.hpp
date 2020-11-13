@@ -17,19 +17,23 @@ namespace Alibabacloud_IotApiGateway {
 class Config : public Darabonba::Model {
 public:
   Config() {}
-  explicit Config(const std::map<string, boost::any> &config) : Darabonba::Model(config) {
+  explicit Config(const std::map<string, boost::any> &config)
+      : Darabonba::Model(config) {
     fromMap(config);
   };
 
   void validate() override {
     if (!domain) {
-      BOOST_THROW_EXCEPTION(boost::enable_error_info(std::runtime_error("domain is required.")));
+      BOOST_THROW_EXCEPTION(
+          boost::enable_error_info(std::runtime_error("domain is required.")));
     }
     if (!appKey) {
-      BOOST_THROW_EXCEPTION(boost::enable_error_info(std::runtime_error("appKey is required.")));
+      BOOST_THROW_EXCEPTION(
+          boost::enable_error_info(std::runtime_error("appKey is required.")));
     }
     if (!appSecret) {
-      BOOST_THROW_EXCEPTION(boost::enable_error_info(std::runtime_error("appSecret is required.")));
+      BOOST_THROW_EXCEPTION(boost::enable_error_info(
+          std::runtime_error("appSecret is required.")));
     }
   }
 
@@ -81,46 +85,48 @@ public:
   }
 
   void fromMap(map<string, boost::any> m) override {
-    if (m.find("domain") != m.end()) {
+    if (m.find("domain") != m.end() && !m["domain"].empty()) {
       domain = make_shared<string>(boost::any_cast<string>(m["domain"]));
     }
-    if (m.find("protocol") != m.end()) {
+    if (m.find("protocol") != m.end() && !m["protocol"].empty()) {
       protocol = make_shared<string>(boost::any_cast<string>(m["protocol"]));
     }
-    if (m.find("appKey") != m.end()) {
+    if (m.find("appKey") != m.end() && !m["appKey"].empty()) {
       appKey = make_shared<string>(boost::any_cast<string>(m["appKey"]));
     }
-    if (m.find("appSecret") != m.end()) {
+    if (m.find("appSecret") != m.end() && !m["appSecret"].empty()) {
       appSecret = make_shared<string>(boost::any_cast<string>(m["appSecret"]));
     }
-    if (m.find("token") != m.end()) {
+    if (m.find("token") != m.end() && !m["token"].empty()) {
       token = make_shared<string>(boost::any_cast<string>(m["token"]));
     }
-    if (m.find("regionId") != m.end()) {
+    if (m.find("regionId") != m.end() && !m["regionId"].empty()) {
       regionId = make_shared<string>(boost::any_cast<string>(m["regionId"]));
     }
-    if (m.find("readTimeout") != m.end()) {
+    if (m.find("readTimeout") != m.end() && !m["readTimeout"].empty()) {
       readTimeout = make_shared<int>(boost::any_cast<int>(m["readTimeout"]));
     }
-    if (m.find("connectTimeout") != m.end()) {
-      connectTimeout = make_shared<int>(boost::any_cast<int>(m["connectTimeout"]));
+    if (m.find("connectTimeout") != m.end() && !m["connectTimeout"].empty()) {
+      connectTimeout =
+          make_shared<int>(boost::any_cast<int>(m["connectTimeout"]));
     }
-    if (m.find("localAddr") != m.end()) {
+    if (m.find("localAddr") != m.end() && !m["localAddr"].empty()) {
       localAddr = make_shared<string>(boost::any_cast<string>(m["localAddr"]));
     }
-    if (m.find("httpProxy") != m.end()) {
+    if (m.find("httpProxy") != m.end() && !m["httpProxy"].empty()) {
       httpProxy = make_shared<string>(boost::any_cast<string>(m["httpProxy"]));
     }
-    if (m.find("httpsProxy") != m.end()) {
-      httpsProxy = make_shared<string>(boost::any_cast<string>(m["httpsProxy"]));
+    if (m.find("httpsProxy") != m.end() && !m["httpsProxy"].empty()) {
+      httpsProxy =
+          make_shared<string>(boost::any_cast<string>(m["httpsProxy"]));
     }
-    if (m.find("userAgent") != m.end()) {
+    if (m.find("userAgent") != m.end() && !m["userAgent"].empty()) {
       userAgent = make_shared<string>(boost::any_cast<string>(m["userAgent"]));
     }
-    if (m.find("noProxy") != m.end()) {
+    if (m.find("noProxy") != m.end() && !m["noProxy"].empty()) {
       noProxy = make_shared<string>(boost::any_cast<string>(m["noProxy"]));
     }
-    if (m.find("maxIdleConns") != m.end()) {
+    if (m.find("maxIdleConns") != m.end() && !m["maxIdleConns"].empty()) {
       maxIdleConns = make_shared<int>(boost::any_cast<int>(m["maxIdleConns"]));
     }
   }
@@ -145,13 +151,15 @@ public:
 class CommonParams : public Darabonba::Model {
 public:
   CommonParams() {}
-  explicit CommonParams(const std::map<string, boost::any> &config) : Darabonba::Model(config) {
+  explicit CommonParams(const std::map<string, boost::any> &config)
+      : Darabonba::Model(config) {
     fromMap(config);
   };
 
   void validate() override {
     if (!apiVer) {
-      BOOST_THROW_EXCEPTION(boost::enable_error_info(std::runtime_error("apiVer is required.")));
+      BOOST_THROW_EXCEPTION(
+          boost::enable_error_info(std::runtime_error("apiVer is required.")));
     }
   }
 
@@ -176,19 +184,20 @@ public:
   }
 
   void fromMap(map<string, boost::any> m) override {
-    if (m.find("apiVer") != m.end()) {
+    if (m.find("apiVer") != m.end() && !m["apiVer"].empty()) {
       apiVer = make_shared<string>(boost::any_cast<string>(m["apiVer"]));
     }
-    if (m.find("iotToken") != m.end()) {
+    if (m.find("iotToken") != m.end() && !m["iotToken"].empty()) {
       iotToken = make_shared<string>(boost::any_cast<string>(m["iotToken"]));
     }
-    if (m.find("cloudToken") != m.end()) {
-      cloudToken = make_shared<string>(boost::any_cast<string>(m["cloudToken"]));
+    if (m.find("cloudToken") != m.end() && !m["cloudToken"].empty()) {
+      cloudToken =
+          make_shared<string>(boost::any_cast<string>(m["cloudToken"]));
     }
-    if (m.find("language") != m.end()) {
+    if (m.find("language") != m.end() && !m["language"].empty()) {
       language = make_shared<string>(boost::any_cast<string>(m["language"]));
     }
-    if (m.find("locale") != m.end()) {
+    if (m.find("locale") != m.end() && !m["locale"].empty()) {
       locale = make_shared<string>(boost::any_cast<string>(m["locale"]));
     }
   }
@@ -204,13 +213,15 @@ public:
 class IoTApiRequest : public Darabonba::Model {
 public:
   IoTApiRequest() {}
-  explicit IoTApiRequest(const std::map<string, boost::any> &config) : Darabonba::Model(config) {
+  explicit IoTApiRequest(const std::map<string, boost::any> &config)
+      : Darabonba::Model(config) {
     fromMap(config);
   };
 
   void validate() override {
     if (!request) {
-      BOOST_THROW_EXCEPTION(boost::enable_error_info(std::runtime_error("request is required.")));
+      BOOST_THROW_EXCEPTION(
+          boost::enable_error_info(std::runtime_error("request is required.")));
     }
   }
 
@@ -226,31 +237,34 @@ public:
       res["params"] = boost::any(*params);
     }
     if (request) {
-      res["request"] = request ? boost::any(request->toMap()) : boost::any(map<string,boost::any>({}));
+      res["request"] = request ? boost::any(request->toMap())
+                               : boost::any(map<string, boost::any>({}));
     }
     return res;
   }
 
   void fromMap(map<string, boost::any> m) override {
-    if (m.find("id") != m.end()) {
+    if (m.find("id") != m.end() && !m["id"].empty()) {
       id = make_shared<string>(boost::any_cast<string>(m["id"]));
     }
-    if (m.find("version") != m.end()) {
+    if (m.find("version") != m.end() && !m["version"].empty()) {
       version = make_shared<string>(boost::any_cast<string>(m["version"]));
     }
-    if (m.find("params") != m.end()) {
-      map<string, boost::any> map1 = boost::any_cast<map<string, boost::any>>(m["params"]);
+    if (m.find("params") != m.end() && !m["params"].empty()) {
+      map<string, boost::any> map1 =
+          boost::any_cast<map<string, boost::any>>(m["params"]);
       map<string, boost::any> toMap1;
-      for (auto item:map1) {
-         toMap1[item.first] = boost::any_cast<boost::any>(item.second);
+      for (auto item : map1) {
+        toMap1[item.first] = item.second;
       }
       params = make_shared<map<string, boost::any>>(toMap1);
     }
-    if (m.find("request") != m.end()) {
-      if (typeid(map<string, boost::any>).name() == m["request"].type().name()) {
-        shared_ptr<CommonParams> model1 = make_shared<CommonParams>();
-        model1->fromMap(boost::any_cast<map<string, boost::any>>(m["request"]));
-        request = model1;
+    if (m.find("request") != m.end() && !m["request"].empty()) {
+      if (typeid(map<string, boost::any>).name() ==
+          m["request"].type().name()) {
+        CommonParams model1;
+        model1.fromMap(boost::any_cast<map<string, boost::any>>(m["request"]));
+        request = make_shared<CommonParams>(model1);
       }
     }
   }
@@ -275,13 +289,12 @@ public:
   shared_ptr<string> _noProxy{};
   shared_ptr<int> _maxIdleConns{};
   shared_ptr<string> _domain{};
-  explicit Client(const shared_ptr<Config>& config);
-  shared_ptr<Darabonba::Response> doRequest(shared_ptr<string> pathname,
-                                            shared_ptr<string> protocol,
-                                            shared_ptr<string> method,
-                                            shared_ptr<map<string, string>> header,
-                                            shared_ptr<IoTApiRequest> body,
-                                            shared_ptr<Darabonba_Util::RuntimeOptions> runtime);
+  explicit Client(const shared_ptr<Config> &config);
+  Darabonba::Response
+  doRequest(shared_ptr<string> pathname, shared_ptr<string> protocol,
+            shared_ptr<string> method, shared_ptr<map<string, string>> header,
+            shared_ptr<IoTApiRequest> body,
+            shared_ptr<Darabonba_Util::RuntimeOptions> runtime);
   string getUserAgent();
 
   ~Client() = default;

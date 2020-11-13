@@ -28,7 +28,7 @@ TEST(tests_Client, test_doRequest)
   body.request = make_shared<Alibabacloud_IotApiGateway::CommonParams>(request);
   Alibabacloud_IotApiGateway::Client client(make_shared<Alibabacloud_IotApiGateway::Config>(config));
 
-  shared_ptr<Darabonba::Response> response = client.doRequest(
+  Darabonba::Response response = client.doRequest(
       make_shared<string>("/kit/debug/ping"),
           make_shared<string>("https"),
               make_shared<string>("POST"),
@@ -37,7 +37,7 @@ TEST(tests_Client, test_doRequest)
                       make_shared<Darabonba_Util::RuntimeOptions>()
   );
   map<string, boost::any> res = boost::any_cast<map<string, boost::any>>(
-      Darabonba_Util::Client::parseJSON(make_shared<string>(response->body->read()))
+      Darabonba_Util::Client::parseJSON(make_shared<string>(response.body->read()))
   );
 
   ASSERT_EQ(200,boost::any_cast<int>(res["code"]));
