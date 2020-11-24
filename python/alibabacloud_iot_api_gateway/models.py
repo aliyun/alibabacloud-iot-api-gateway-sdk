@@ -33,37 +33,65 @@ class Config(TeaModel):
 
     def to_map(self):
         result = {}
-        result['domain'] = self.domain
-        result['protocol'] = self.protocol
-        result['appKey'] = self.app_key
-        result['appSecret'] = self.app_secret
-        result['token'] = self.token
-        result['regionId'] = self.region_id
-        result['readTimeout'] = self.read_timeout
-        result['connectTimeout'] = self.connect_timeout
-        result['localAddr'] = self.local_addr
-        result['httpProxy'] = self.http_proxy
-        result['httpsProxy'] = self.https_proxy
-        result['userAgent'] = self.user_agent
-        result['noProxy'] = self.no_proxy
-        result['maxIdleConns'] = self.max_idle_conns
+        if self.domain is not None:
+            result['domain'] = self.domain
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.app_key is not None:
+            result['appKey'] = self.app_key
+        if self.app_secret is not None:
+            result['appSecret'] = self.app_secret
+        if self.token is not None:
+            result['token'] = self.token
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.read_timeout is not None:
+            result['readTimeout'] = self.read_timeout
+        if self.connect_timeout is not None:
+            result['connectTimeout'] = self.connect_timeout
+        if self.local_addr is not None:
+            result['localAddr'] = self.local_addr
+        if self.http_proxy is not None:
+            result['httpProxy'] = self.http_proxy
+        if self.https_proxy is not None:
+            result['httpsProxy'] = self.https_proxy
+        if self.user_agent is not None:
+            result['userAgent'] = self.user_agent
+        if self.no_proxy is not None:
+            result['noProxy'] = self.no_proxy
+        if self.max_idle_conns is not None:
+            result['maxIdleConns'] = self.max_idle_conns
         return result
 
     def from_map(self, map={}):
-        self.domain = map.get('domain')
-        self.protocol = map.get('protocol')
-        self.app_key = map.get('appKey')
-        self.app_secret = map.get('appSecret')
-        self.token = map.get('token')
-        self.region_id = map.get('regionId')
-        self.read_timeout = map.get('readTimeout')
-        self.connect_timeout = map.get('connectTimeout')
-        self.local_addr = map.get('localAddr')
-        self.http_proxy = map.get('httpProxy')
-        self.https_proxy = map.get('httpsProxy')
-        self.user_agent = map.get('userAgent')
-        self.no_proxy = map.get('noProxy')
-        self.max_idle_conns = map.get('maxIdleConns')
+        if map.get('domain') is not None:
+            self.domain = map.get('domain')
+        if map.get('protocol') is not None:
+            self.protocol = map.get('protocol')
+        if map.get('appKey') is not None:
+            self.app_key = map.get('appKey')
+        if map.get('appSecret') is not None:
+            self.app_secret = map.get('appSecret')
+        if map.get('token') is not None:
+            self.token = map.get('token')
+        if map.get('regionId') is not None:
+            self.region_id = map.get('regionId')
+        if map.get('readTimeout') is not None:
+            self.read_timeout = map.get('readTimeout')
+        if map.get('connectTimeout') is not None:
+            self.connect_timeout = map.get('connectTimeout')
+        if map.get('localAddr') is not None:
+            self.local_addr = map.get('localAddr')
+        if map.get('httpProxy') is not None:
+            self.http_proxy = map.get('httpProxy')
+        if map.get('httpsProxy') is not None:
+            self.https_proxy = map.get('httpsProxy')
+        if map.get('userAgent') is not None:
+            self.user_agent = map.get('userAgent')
+        if map.get('noProxy') is not None:
+            self.no_proxy = map.get('noProxy')
+        if map.get('maxIdleConns') is not None:
+            self.max_idle_conns = map.get('maxIdleConns')
         return self
 
 
@@ -85,19 +113,29 @@ class CommonParams(TeaModel):
 
     def to_map(self):
         result = {}
-        result['apiVer'] = self.api_ver
-        result['iotToken'] = self.iot_token
-        result['cloudToken'] = self.cloud_token
-        result['language'] = self.language
-        result['locale'] = self.locale
+        if self.api_ver is not None:
+            result['apiVer'] = self.api_ver
+        if self.iot_token is not None:
+            result['iotToken'] = self.iot_token
+        if self.cloud_token is not None:
+            result['cloudToken'] = self.cloud_token
+        if self.language is not None:
+            result['language'] = self.language
+        if self.locale is not None:
+            result['locale'] = self.locale
         return result
 
     def from_map(self, map={}):
-        self.api_ver = map.get('apiVer')
-        self.iot_token = map.get('iotToken')
-        self.cloud_token = map.get('cloudToken')
-        self.language = map.get('language')
-        self.locale = map.get('locale')
+        if map.get('apiVer') is not None:
+            self.api_ver = map.get('apiVer')
+        if map.get('iotToken') is not None:
+            self.iot_token = map.get('iotToken')
+        if map.get('cloudToken') is not None:
+            self.cloud_token = map.get('cloudToken')
+        if map.get('language') is not None:
+            self.language = map.get('language')
+        if map.get('locale') is not None:
+            self.locale = map.get('locale')
         return self
 
 
@@ -119,22 +157,24 @@ class IoTApiRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['id'] = self.id
-        result['version'] = self.version
-        result['params'] = self.params
+        if self.id is not None:
+            result['id'] = self.id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.params is not None:
+            result['params'] = self.params
         if self.request is not None:
             result['request'] = self.request.to_map()
-        else:
-            result['request'] = None
         return result
 
     def from_map(self, map={}):
-        self.id = map.get('id')
-        self.version = map.get('version')
-        self.params = map.get('params')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('version') is not None:
+            self.version = map.get('version')
+        if map.get('params') is not None:
+            self.params = map.get('params')
         if map.get('request') is not None:
             temp_model = CommonParams()
             self.request = temp_model.from_map(map['request'])
-        else:
-            self.request = None
         return self
